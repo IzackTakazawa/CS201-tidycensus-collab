@@ -16,6 +16,6 @@ For collaboration:
 8. Pull! Did you get a copy of your partner's file?
 
 
-Owner: 
+Owner: Izack T.
 
 Collaborator: Christian R. 
