@@ -4,7 +4,7 @@ author: "Connor Flynn & Dr. Catherine Brockway"
 date: "1/24/2024"
 output: html_document
 ---
-
+#comment# 
 Hello and welcome to our Introduction to R for Non-Profits Workshop :)
 
 *Goals* of this R Markdown (Rmd)
