@@ -18,4 +18,4 @@ For collaboration:
 
 Owner: Izack T.
 
-Collaborator: Christian R. 
+Collaborator: Christian R., William K.
