@@ -4,7 +4,7 @@ author: "Willia Kim"
 date: "1/24/2024"
 output: html_document
 ---
- 
+
 Hello and welcome to our Introduction to R for Non-Profits Workshop :)
 
 *Goals* of this R Markdown (Rmd)
