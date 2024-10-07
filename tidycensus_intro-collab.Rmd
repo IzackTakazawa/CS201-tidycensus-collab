@@ -1,6 +1,6 @@
 ---
 title: "An Introduction to the tidycensus R Package"
-author: "Willia Kim"
+author: "Izack & Christian"
 date: "1/24/2024"
 output: html_document
 ---
