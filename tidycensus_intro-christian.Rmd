@@ -1,7 +1,7 @@
 ---
 title: "An Introduction to the tidycensus R Package"
 author: "Connor Flynn & Dr. Catherine Brockway"
-date: "1/24/2024"
+date: "1/25/2024"
 output: html_document
 ---
 
