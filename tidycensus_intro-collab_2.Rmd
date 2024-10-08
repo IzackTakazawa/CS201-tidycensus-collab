@@ -102,9 +102,9 @@ Let's investigate family poverty on Oahu at the census tract level
 DP03_0119P is the code for Percent!!PERCENTAGE OF FAMILIES AND PEOPLE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL!!All families
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
-oahu_family_poverty <- get_acs(
+oahu_one_race_hawaiian_other <- get_acs(
   geography = "tract",
-  variables = c(percent_of_families_with_income_below_poverty_line = "DP03_0119P"),
+  variables = c(native_hawaiian_other = "DP05_0052P"),
   state = "HI",
   county = "Honolulu",
   geometry = TRUE,
@@ -122,18 +122,18 @@ Now, let's map the data
 
 ```{r}
 
-family_poverty_map <- ggplot(oahu_family_poverty) +
+oahu_hawaiian_other_map <- ggplot(oahu_one_race_hawaiian_other) +
   geom_sf_interactive(
     aes(
-      fill = percent_of_families_with_income_below_poverty_lineE,
-      tooltip = paste(NAME, ": ", percent_of_families_with_income_below_poverty_lineE, "%"),
+      fill = native_hawaiian_otherE,
+      tooltip = paste(NAME, ": ", native_hawaiian_otherE, "%"),
       data_id = NAME
     )
   ) +
   scale_fill_viridis_c(option = "magma") +
   theme_void() 
 
-girafe(ggobj = family_poverty_map, width = 700, height = 400)
+girafe(ggobj = oahu_hawaiian_other_map, width = 700, height = 400)
 
   
 
@@ -261,7 +261,7 @@ Directions:
 Investigating (insert variable here) on Oahu at the census tract level.
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
-
+DP05_0052P
 
 ```
 
