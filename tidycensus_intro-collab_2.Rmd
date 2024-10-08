@@ -190,10 +190,10 @@ ggplot(oahu_hawaiian_other_2009_2019, aes(x = year, y = estimate, group = 1)) +
 Let's explore the relationship between poverty and education with a scatter plot
 
 ```{r, message=FALSE}
-oahu_family_poverty_college_education <- get_acs(
+oahu_native_hawaiian_other_one_race <- get_acs(
   geography = "tract",
-  variables = c(percent_of_families_with_income_below_poverty_line = "DP03_0119P",
-                percent_of_indivivuals_with_bachelors_degree_or_higher = "DP02_0065P"),
+  variables = c(native_hawaiian_other = "DP05_0052P",
+                percent_of_japanese_one_race = "DP05_0048P"),
   state = "HI",
   county = "Honolulu",
   #geometry = TRUE,
@@ -206,8 +206,8 @@ oahu_family_poverty_college_education <- get_acs(
 ```
 
 ```{r, warning=FALSE, message=FALSE}
-ggplot(oahu_family_poverty_college_education, aes(x = percent_of_families_with_income_below_poverty_lineE,
-                                             y = percent_of_indivivuals_with_bachelors_degree_or_higherE)) +
+ggplot(oahu_native_hawaiian_other_one_race, aes(x = native_hawaiian_otherE,
+                                             y = percent_of_japanese_one_raceE)) +
   geom_point() +
   geom_smooth() +
   stat_cor() +
