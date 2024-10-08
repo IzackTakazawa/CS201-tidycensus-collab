@@ -4,7 +4,7 @@ author: "Izack & Christian"
 date: "1/24/2024"
 output: html_document
 ---
- 
+
 Hello and welcome to our Introduction to R for Non-Profits Workshop :)
 
 *Goals* of this R Markdown (Rmd)
@@ -268,7 +268,18 @@ DP05_0052P
 ### Challenge: Mapping
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
+oahu_hawaiian_other_map <- ggplot(oahu_one_race_hawaiian_other) +
+  geom_sf_interactive(
+    aes(
+      fill = native_hawaiian_otherE,
+      tooltip = paste(NAME, ": ", native_hawaiian_otherE, "%"),
+      data_id = NAME
+    )
+  ) +
+  scale_fill_viridis_c(option = "magma") +
+  theme_void() 
 
+girafe(ggobj = oahu_hawaiian_other_map, width = 700, height = 400)
 
 ```
 
