@@ -150,10 +150,10 @@ Now let's look at family poverty in Honolulu County over time
 years <- 2010:2019
 names(years) <- years
 
-family_poverty_2009_2019 <- map_dfr(years, ~{
+oahu_hawaiian_other_2009_2019 <- map_dfr(years, ~{
   get_acs(
     geography = "county",
-    variables = c(percent_of_families_with_income_below_poverty_line = "DP03_0119P"),
+    variables = c(native_hawaiian_other = "DP05_0052P"),
     state = "HI",
     county = "Honolulu",
     year = .x,
@@ -163,7 +163,7 @@ family_poverty_2009_2019 <- map_dfr(years, ~{
 ```
 
 ```{r, warning=FALSE}
-ggplot(family_poverty_2009_2019, aes(x = year, y = estimate, group = 1)) + 
+ggplot(oahu_hawaiian_other_2009_2019, aes(x = year, y = estimate, group = 1)) + 
   geom_line() + 
   geom_point()
 ```
@@ -171,7 +171,7 @@ ggplot(family_poverty_2009_2019, aes(x = year, y = estimate, group = 1)) +
 This graph is okay, but we can do alot to make it more informative and nicer too look at
 
 ```{r, warning=FALSE}
-ggplot(family_poverty_2009_2019, aes(x = year, y = estimate, group = 1)) + 
+ggplot(oahu_hawaiian_other_2009_2019, aes(x = year, y = estimate, group = 1)) + 
   geom_ribbon(aes(ymax = estimate + moe, ymin = estimate - moe), 
               fill = "steelblue",
               alpha = 0.4) + 
@@ -179,7 +179,7 @@ ggplot(family_poverty_2009_2019, aes(x = year, y = estimate, group = 1)) +
   geom_point(color = "steelblue", size = 2) + 
   theme_minimal() + 
   #scale_y_continuous(labels = label_dollar(scale = .001, suffix = "k")) + 
-  labs(title = "Percentage of Families Under the Poverty Line: Honolulu County",
+  labs(title = "Percentage of Families Only Native Hawaiian or Other Pacific Islander: Honolulu County",
        x = "Year",
        y = "%",
        caption = "Shaded area represents margin of error around the estimate")
@@ -286,7 +286,18 @@ girafe(ggobj = oahu_hawaiian_other_map, width = 700, height = 400)
 ### Challenge: Time Series
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
-
+ggplot(oahu_hawaiian_other_2009_2019, aes(x = year, y = estimate, group = 1)) + 
+  geom_ribbon(aes(ymax = estimate + moe, ymin = estimate - moe), 
+              fill = "steelblue",
+              alpha = 0.4) + 
+  geom_line(color = "steelblue") + 
+  geom_point(color = "steelblue", size = 2) + 
+  theme_minimal() + 
+  #scale_y_continuous(labels = label_dollar(scale = .001, suffix = "k")) + 
+  labs(title = "Percentage of Families Only Native Hawaiian or Other Pacific Islander: Honolulu County",
+       x = "Year",
+       y = "%",
+       caption = "Shaded area represents margin of error around the estimate")
 
 ```
 
