@@ -344,4 +344,4 @@ ggplot(oahu_native_hawaiian_other_one_race, aes(x = native_hawaiian_otherE,
 
 ### Challenge: Describe what you found
 
-
+From our data, we found that there are more families of only Japanese ethnicity than families of only Hawaiian or Pacific Islander decent. And the percentage of families of only Native Hawaiian or Pacific Islander significantly grew after 2016.
