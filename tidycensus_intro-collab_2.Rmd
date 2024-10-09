@@ -286,6 +286,21 @@ girafe(ggobj = oahu_hawaiian_other_map, width = 700, height = 400)
 ### Challenge: Time Series
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
+years <- 2010:2019
+names(years) <- years
+
+oahu_hawaiian_other_2009_2019 <- map_dfr(years, ~{
+  get_acs(
+    geography = "county",
+    variables = c(native_hawaiian_other = "DP05_0052P"),
+    state = "HI",
+    county = "Honolulu",
+    year = .x,
+    survey = "acs1"
+  )
+}, .id = "year")
+
+#map time series
 ggplot(oahu_hawaiian_other_2009_2019, aes(x = year, y = estimate, group = 1)) + 
   geom_ribbon(aes(ymax = estimate + moe, ymin = estimate - moe), 
               fill = "steelblue",
@@ -306,8 +321,27 @@ ggplot(oahu_hawaiian_other_2009_2019, aes(x = year, y = estimate, group = 1)) +
 Exploring the relationship between (insert variable here) and (insert variable here) with a scatter plot
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
+oahu_native_hawaiian_other_one_race <- get_acs(
+  geography = "tract",
+  variables = c(native_hawaiian_other = "DP05_0052P",
+                percent_of_japanese_one_race = "DP05_0048P"),
+  state = "HI",
+  county = "Honolulu",
+  #geometry = TRUE,
+  output = "wide",
+  year = 2021
+) %>% 
+  dplyr::filter(GEOID != "15003981200" & GEOID !="15003981900")
 
-
+#run plot
+ggplot(oahu_native_hawaiian_other_one_race, aes(x = native_hawaiian_otherE,
+                                             y = percent_of_japanese_one_raceE)) +
+  geom_point() +
+  geom_smooth() +
+  stat_cor() +
+  theme_minimal()
 ```
 
 ### Challenge: Describe what you found
+
+
